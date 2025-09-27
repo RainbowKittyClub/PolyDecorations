@@ -13,6 +13,13 @@
     "sources": "https://github.com/Patbox/PolyDecorations"
   },
 
+  "custom": {
+    "polydex:entry/polydecorations": {
+      "name": "PolyDecorations",
+      "icon": "polydecorations:oak_bench"
+    }
+  },
+
   "license": "LGPLv3",
   "icon": "assets/polydecorations/textures/icon.png",
 
