@@ -1,8 +1,6 @@
 package eu.pb4.polydecorations.polydex;
 
-import eu.pb4.sgui.api.elements.GuiElement;
 import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.recipe.RecipeType;
 
 import static eu.pb4.polydecorations.ModInit.LOGGER;
 
@@ -14,15 +12,7 @@ public class PolydexCompat {
         if (IS_PRESENT) {
             PolydexCompatImpl.register();
         } else {
-            //LOGGER.warn("[PolyDecorations] Polydex not found! It's highly suggested to install it!");
+            LOGGER.info("Polydex not found, skipping compatibility registration");
         }
-    }
-
-
-    public static GuiElement getButton(RecipeType<?> type) {
-        if (IS_PRESENT) {
-            return PolydexCompatImpl.getButton(type);
-        }
-        return GuiElement.EMPTY;
     }
 }
