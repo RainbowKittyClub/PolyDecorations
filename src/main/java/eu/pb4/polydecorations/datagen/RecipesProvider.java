@@ -13,7 +13,6 @@ import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
 import net.minecraft.advancement.criterion.InventoryChangedCriterion;
 import net.minecraft.data.recipe.*;
 import net.minecraft.item.DyeItem;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
@@ -26,8 +25,8 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.ItemTags;
+import net.minecraft.predicate.item.ItemPredicate;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.collection.DefaultedList;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -243,10 +242,13 @@ class RecipesProvider extends FabricRecipeProvider {
                         .pattern("r r")
                         .pattern("sws")
                         .pattern("sss")
-                        .input('r', DecorationsItems.ROPE)
+                        .input('r', ConventionalItemTags.ROPES)
                         .input('w', ItemTags.PLANKS)
                         .input('s', Items.STICK)
-                        .criterion("planks", InventoryChangedCriterion.Conditions.items(DecorationsItems.ROPE, Items.STICK))
+                        .criterion("planks", InventoryChangedCriterion.Conditions.items(
+                                ItemPredicate.Builder.create().tag(itemWrap, ConventionalItemTags.ROPES),
+                                ItemPredicate.Builder.create().items(itemWrap, Items.STICK)
+                        ))
                         .offerTo(exporter);
 
                 ShapelessRecipeJsonBuilder.create(itemWrap, RecipeCategory.DECORATIONS, DecorationsBlocks.ROPE, 4)

@@ -87,6 +87,9 @@ class ItemTagsProvider extends FabricTagProvider.ItemTagProvider {
         this.valueLookupBuilder(DecorationsItemTags.SLEEPING_BAGS)
                 .add(DecorationsItems.SLEEPING_BAG.values().toArray(Item[]::new))
         ;
+
+        this.valueLookupBuilder(ConventionalItemTags.ROPES)
+                .add(DecorationsItems.ROPE);
     }
 
 
